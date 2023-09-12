@@ -12,7 +12,7 @@ import search_icon from '../../assets/search.png'
 function WeatherApp() {
   return (
     <>
-    <section className='weatherApp w-full h-[800px] bg-black'> 
+    <section className='weatherApp w-full h-[1000px] bg-black'> 
         <div className='container w-full h-[700px] bg-white'>
             <div className='top-bar'>
                 <input type="text" className='cityInput' placeholder='Search'/>
