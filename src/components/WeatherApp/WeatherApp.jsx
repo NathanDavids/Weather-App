@@ -13,7 +13,7 @@ function WeatherApp() {
   return (
     <>
     <section className='weatherApp w-full h-[1000px] bg-black'> 
-        <div className='container w-full h-[700px] bg-white'>
+        <div className='container w-full h-[850px] bg-white'>
             <div className='top-bar'>
                 <input type="text" className='cityInput' placeholder='Search'/>
                 <div className='search-icon'>
