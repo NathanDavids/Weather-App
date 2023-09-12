@@ -113,7 +113,7 @@ function WeatherApp() {
     <section className='weatherApp w-full h-[1000px] bg-black'> 
         <img src={bgImg} alt="" className='w-full h-full'/>
         <div className='overlay'></div>
-        <div className='container w-[600px] bg-white'>
+        <div className='container w-[600px]'>
             <div className='top-bar'>
                 <input type="text" className='cityInput' placeholder='Search'/>
                 <div className='search-icon' onClick={()=> {search()}}>
