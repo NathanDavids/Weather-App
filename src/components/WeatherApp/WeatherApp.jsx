@@ -8,6 +8,14 @@ import rain_icon from '../../assets/rain.png'
 import snow_icon from '../../assets/snow.png'
 import wind_icon from '../../assets/wind.png'
 import humidity_icon from '../../assets/humidity.png'
+import clear_img from '../../assets/clearImg.jpg'
+import cloud_img from '../../assets/cloudImg.jpg'
+import snow_img from '../../assets/snowImg.jpg'
+import rain_img from '../../assets/rainImg.jpg'
+import clearNight_img from '../../assets/clearNight.jpg' 
+import cloudNight_img from '../../assets/cloudNight.jpg'
+import snowNight_img from '../../assets/snowNight.jpg'
+import rainNight_img from '../../assets/rainNight.jpg'
 
 
 function WeatherApp() {
@@ -15,6 +23,7 @@ function WeatherApp() {
   let api_key = "7046c25f3c360a37905eccfd0b746747"
 
   const [wicon, setWicon] = useState(cloud_icon);
+  const [bgImg, setBgImg] = useState(clear_img);
 
   const search  = async () => {
     const element = document.getElementsByClassName("cityInput")
@@ -37,36 +46,74 @@ function WeatherApp() {
     temprature[0].innerHTML = Math.floor(data.main.temp) + "°C";
     location[0].innerHTML = data.name;
 
-    if (data.weather[0].icon === "01d" || data.weather[0].icon === "01n"){
+    if (data.weather[0].icon === "01d"){
       setWicon(clear_icon);
+      setBgImg(clear_img);
     }
-    else if (data.weather[0].icon === "02d" || data.weather[0].icon === "02n"){
+    else if (data.weather[0].icon === "01n"){
+      setWicon(clear_icon);
+      setBgImg(clearNight_img);
+    }
+    else if (data.weather[0].icon === "02d"){
       setWicon(cloud_icon);
+      setBgImg(cloud_img);
     }
-    else if (data.weather[0].icon === "03d" || data.weather[0].icon === "03n"){
+    else if (data.weather[0].icon === "02n"){
+      setWicon(cloud_icon);
+      setBgImg(cloudNight_img);
+    }
+    else if (data.weather[0].icon === "03d"){
       setWicon(drizzle_icon);
+      setBgImg(rain_img);
     }
-    else if (data.weather[0].icon === "04d" || data.weather[0].icon === "04n"){
+    else if (data.weather[0].icon === "03n"){
       setWicon(drizzle_icon);
+      setBgImg(rainNight_img);
     }
-    else if (data.weather[0].icon === "09d" || data.weather[0].icon === "09n"){
+    else if (data.weather[0].icon === "04d"){
+      setWicon(drizzle_icon);
+      setBgImg(rain_img);
+    }
+    else if (data.weather[0].icon === "04n"){
+      setWicon(drizzle_icon);
+      setBgImg(rainNight_img);
+    }
+    else if (data.weather[0].icon === "09d"){
       setWicon(rain_icon);
+      setBgImg(rain_img);
     }
-    else if (data.weather[0].icon === "10d" || data.weather[0].icon === "10n"){
+    else if (data.weather[0].icon === "09n"){
+      setWicon(drizzle_icon);
+      setBgImg(rainNight_img);
+    }
+    else if (data.weather[0].icon === "10d"){
       setWicon(rain_icon);
+      setBgImg(rain_img);
     }
-    else if (data.weather[0].icon === "13d" || data.weather[0].icon === "13n"){
+    else if (data.weather[0].icon === "10n"){
+      setWicon(rain_icon);
+      setBgImg(rainNight_img);
+    }
+    else if (data.weather[0].icon === "13d"){
       setWicon(snow_icon);
+      setBgImg(snow_img);
+    }
+    else if (data.weather[0].icon === "13n"){
+      setWicon(snow_icon);
+      setBgImg(snow_img);
     }
     else{
       setWicon(clear_icon);
+      setBgImg(clear_img);
     }
   }
 
   return (
     <>
     <section className='weatherApp w-full h-[1000px] bg-black'> 
-        <div className='container w-full h-[850px] bg-white'>
+        <img src={bgImg} alt="" className='w-full h-full'/>
+        <div className='overlay'></div>
+        <div className='container w-[600px] bg-white'>
             <div className='top-bar'>
                 <input type="text" className='cityInput' placeholder='Search'/>
                 <div className='search-icon' onClick={()=> {search()}}>
